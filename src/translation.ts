@@ -353,7 +353,7 @@ export const translations: Record<Lang, TranslationSet> = {
       limitDescription:
         "If you'd like to know more about my experience, you can contact me directly.",
       contactEmail: "Contact me by email",
-      questionsAvailable: "{{count}} questions available",
+      questionsAvailable: " questions available",
       questionsUsed: "questions used",
       inputLimit: "Limit reached",
       inputThinking: "MinWoo AI is thinking...",
@@ -595,7 +595,7 @@ export const translations: Record<Lang, TranslationSet> = {
       limitDescription:
         "Si quieres saber más sobre mi experiencia, puedes contactar conmigo directamente.",
       contactEmail: "Contactar por email",
-      questionsAvailable: "{{count}} preguntas disponibles",
+      questionsAvailable: " preguntas disponibles",
       questionsUsed: " preguntas utilizadas",
       inputLimit: "Límite alcanzado",
       inputThinking: "MinWoo AI está pensando...",
@@ -841,7 +841,7 @@ export const translations: Record<Lang, TranslationSet> = {
       limitDescription:
         "Si vous souhaitez en savoir plus sur mon expérience, vous pouvez me contacter directement.",
       contactEmail: "Me contacter par e-mail",
-      questionsAvailable: "{{count}} questions disponibles",
+      questionsAvailable: " questions disponibles",
       questionsUsed: "questions utilisées",
       inputLimit: "Limite atteinte",
       inputThinking: "MinWoo AI réfléchit...",
