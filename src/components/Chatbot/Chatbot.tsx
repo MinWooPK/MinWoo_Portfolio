@@ -8,12 +8,14 @@ type Message = {
 };
 
 const MAX_QUESTIONS = 4;
+const ONE_HOUR = 60 * 60 * 1000;
+const REQUEST_TIMEOUT = 15000;
 
 const Chatbot = () => {
   const { t } = useLang();
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const ONE_HOUR = 60 * 60 * 1000;
+  const [isThinking, setIsThinking] = useState(false);
 
   const [questionCount, setQuestionCount] = useState(() => {
     const savedCount = Number(
@@ -26,7 +28,6 @@ const Chatbot = () => {
 
     const now = Date.now();
 
-    // Si ha pasado una hora, reiniciamos el contador
     if (savedTimestamp && now - savedTimestamp >= ONE_HOUR) {
       localStorage.removeItem("chatbot-question-count");
       localStorage.removeItem("chatbot-question-timestamp");
@@ -36,7 +37,6 @@ const Chatbot = () => {
 
     return savedCount;
   });
-  const [isThinking, setIsThinking] = useState(false);
 
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -52,7 +52,6 @@ const Chatbot = () => {
 
     const userMessage = message.trim();
 
-    // La pregunta se consume inmediatamente al pulsar Enviar
     setQuestionCount((prev) => {
       const newCount = prev + 1;
 
@@ -64,6 +63,7 @@ const Chatbot = () => {
 
       return newCount;
     });
+
     setMessages((prev) => [
       ...prev,
       {
@@ -79,7 +79,7 @@ const Chatbot = () => {
 
     const timeout = setTimeout(() => {
       controller.abort();
-    }, 5000);
+    }, REQUEST_TIMEOUT);
 
     try {
       const response = await fetch("/api/chat", {
@@ -134,29 +134,45 @@ const Chatbot = () => {
       setIsThinking(false);
     }
   };
+
   return (
     <>
       {isOpen && (
         <div className="fixed bottom-24 right-6 z-50 flex h-[500px] w-[360px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
           {/* Header */}
-          <div className="flex items-center justify-between bg-slate-900 px-4 py-3 text-white">
-            <div>
-              <h2 className="font-semibold">MinWoo AI</h2>
+          <div className="bg-slate-900 px-4 py-3 text-white">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="font-semibold">MinWoo AI</h2>
 
-              <p className="text-xs text-slate-400">
-                {limitReached
-                  ? t.chatbot.limitReached
-                  : `${MAX_QUESTIONS - questionCount} ${t.chatbot.questionsAvailable}`}
-              </p>
+                <p className="text-xs text-slate-400">
+                  {limitReached
+                    ? t.chatbot.limitReached
+                    : `${MAX_QUESTIONS - questionCount} ${t.chatbot.questionsAvailable}`}
+                </p>
+              </div>
+
+              <button
+                onClick={() => setIsOpen(false)}
+                className="rounded-lg p-1 text-slate-400 transition hover:bg-slate-800 hover:text-white"
+                aria-label={t.chatbot.close}
+              >
+                <X size={20} />
+              </button>
             </div>
 
-            <button
-              onClick={() => setIsOpen(false)}
-              className="rounded-lg p-1 text-slate-400 transition hover:bg-slate-800 hover:text-white"
-              aria-label={t.chatbot.close}
-            >
-              <X size={20} />
-            </button>
+            {/* Información del servicio */}
+            {!limitReached && (
+              <div className="mt-3 rounded-lg border border-slate-700 bg-slate-800/60 px-3 py-2">
+                <p className="text-[11px] leading-4 text-slate-300">
+                  Las respuestas pueden tardar unos segundos.
+                </p>
+
+                <p className="mt-0.5 text-[10px] leading-4 text-slate-500">
+                  Servicio gratuito con recursos limitados.
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Messages */}
@@ -180,13 +196,19 @@ const Chatbot = () => {
               </div>
             ))}
 
-            {/* Thinking animation */}
+            {/* Thinking */}
             {isThinking && (
               <div className="flex justify-start">
-                <div className="flex items-center gap-1 rounded-2xl bg-slate-100 px-4 py-3">
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.3s]" />
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.15s]" />
-                  <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400" />
+                <div className="flex items-center gap-2 rounded-2xl bg-slate-100 px-4 py-3">
+                  <div className="flex items-center gap-1">
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.3s]" />
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.15s]" />
+                    <span className="h-2 w-2 animate-bounce rounded-full bg-slate-400" />
+                  </div>
+
+                  <span className="text-xs text-slate-500">
+                    Preparando respuesta...
+                  </span>
                 </div>
               </div>
             )}
