@@ -115,7 +115,7 @@ export default function Hero() {
             </p>
 
             <div
-              className="flex flex-wrap items-center gap-4 animate-fade-in-up"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 animate-fade-in-up"
               style={{ animationDelay: "0.3s" }}
             >
               <a
@@ -125,7 +125,7 @@ export default function Hero() {
                 {t.hero.viewWork}
                 <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
               </a>
-              <button
+              {/* <button
                 type="button"
                 onClick={handleDownloadCV}
                 disabled={isDownloading}
@@ -147,7 +147,30 @@ export default function Hero() {
                     {t.hero.downloadCV}
                   </>
                 )}
-              </button>
+              </button> */}
+              <a
+                href="/cv/MinWoo_Park_CV.pdf"
+                download="MinWoo_Park_CV.pdf"
+                onClick={handleDownloadCV}
+                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-ink-700 hover:border-accent-500/50 text-ink-100 font-semibold transition-all duration-300 hover:bg-ink-900/60"
+              >
+                {isDownloading ? (
+                  <>
+                    <Download className="w-4 h-4 animate-bounce" />
+                    Downloading...
+                  </>
+                ) : isDownloaded ? (
+                  <>
+                    <span className="text-accent-400">✓</span>
+                    CV Downloaded
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
+                    {t.hero.downloadCV}
+                  </>
+                )}
+              </a>
             </div>
 
             <div
@@ -175,11 +198,11 @@ export default function Hero() {
           </div>
 
           <div
-            className="lg:col-span-5 relative animate-fade-in"
+            className="lg:col-span-5 relative w-full min-w-0 animate-fade-in"
             style={{ animationDelay: "0.3s" }}
           >
             <div
-              className="relative mx-auto max-w-sm [transform-style:preserve-3d]"
+              className="relative mx-auto w-full max-w-sm min-w-0 [transform-style:preserve-3d]"
               onMouseMove={tiltCard}
               onMouseLeave={resetTilt}
             >
@@ -198,7 +221,8 @@ export default function Hero() {
                     profile.tsx
                   </span>
                 </div>
-                <pre className="text-sm font-mono leading-relaxed text-ink-300 overflow-x-auto">
+                <pre className="max-w-full overflow-x-auto whitespace-pre-wrap break-words text-xs sm:text-sm font-mono leading-relaxed text-ink-300">
+                  {" "}
                   <span className="text-ink-500">{t.hero.codeComment}</span>
                   {"\n"}
                   <span className="text-brand-400">const</span>{" "}
@@ -276,7 +300,7 @@ export default function Hero() {
 
       <a
         href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-ink-500 hover:text-accent-400 transition-colors animate-bounce"
+        className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2 text-ink-500 hover:text-accent-400 transition-colors animate-bounce"
         aria-label="Scroll down"
       >
         <ArrowDown className="w-5 h-5" />
