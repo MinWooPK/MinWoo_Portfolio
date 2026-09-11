@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowDown, Download, Sparkles, MapPin } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import { socials } from "@/data/portfolio";
@@ -9,6 +9,21 @@ export default function Hero() {
   const [text, setText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const tiltCard = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    el.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 16}deg) rotateY(${(x - 0.5) * 16}deg)`;
+  };
+
+  const resetTilt = () => {
+    const el = cardRef.current;
+    if (el) el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+  };
 
   useEffect(() => {
     const current = roles[roleIndex];
@@ -122,9 +137,16 @@ export default function Hero() {
             className="lg:col-span-5 relative animate-fade-in"
             style={{ animationDelay: "0.3s" }}
           >
-            <div className="relative mx-auto max-w-sm">
-              <div className="absolute -inset-4 bg-gradient-to-br from-accent-500/20 via-brand-500/10 to-transparent rounded-3xl blur-2xl" />
-              <div className="relative glass-card p-6 gradient-border">
+            <div
+              className="relative mx-auto max-w-sm [transform-style:preserve-3d]"
+              onMouseMove={tiltCard}
+              onMouseLeave={resetTilt}
+            >
+              <div className="absolute -inset-4 bg-gradient-to-br from-accent-500/20 via-brand-500/10 to-transparent rounded-3xl blur-2xl animate-pulse-slow" />
+              <div
+                ref={cardRef}
+                className="relative glass-card p-6 gradient-border transition-transform duration-200 ease-out will-change-transform"
+              >
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500/80" />
