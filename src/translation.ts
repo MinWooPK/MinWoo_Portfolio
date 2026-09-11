@@ -154,7 +154,7 @@ export const translations: Record<Lang, TranslationSet> = {
         { value: "3+", label: "Years Experience" },
         { value: "8+", label: "ERP Modules Built" },
         { value: "React + .NET", label: "Tech Stack" },
-        { value: "Remote", label: "Work Mode" },
+        { value: "Hybrid", label: "Work Mode" },
       ],
     },
     about: {
@@ -395,7 +395,7 @@ export const translations: Record<Lang, TranslationSet> = {
         { value: "3+", label: "Años de Experiencia" },
         { value: "8+", label: "Módulos ERP Creados" },
         { value: "React + .NET", label: "Stack Tecnológico" },
-        { value: "Remoto", label: "Modalidad" },
+        { value: "Híbrido", label: "Modalidad" },
       ],
     },
     about: {
@@ -637,7 +637,7 @@ export const translations: Record<Lang, TranslationSet> = {
         { value: "3+", label: "Ans d'Expérience" },
         { value: "8+", label: "Modules ERP Créés" },
         { value: "React + .NET", label: "Stack Tech" },
-        { value: "Télétravail", label: "Mode de Travail" },
+        { value: "Hybride", label: "Mode de Travail" },
       ],
     },
     about: {
@@ -883,7 +883,7 @@ export const translations: Record<Lang, TranslationSet> = {
         { value: "3+", label: "경력 연차" },
         { value: "8+", label: "개발한 ERP 모듈" },
         { value: "React + .NET", label: "기술 스택" },
-        { value: "Remote", label: "근무 방식" },
+        { value: "하이브리드", label: "근무 방식" },
       ],
     },
 
