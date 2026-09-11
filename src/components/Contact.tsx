@@ -19,14 +19,42 @@ export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("https://formspree.io/f/mlekzevp", {
+        method: "POST",
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al enviar el formulario");
+      }
+
       setStatus("success");
-      setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 4000);
-    }, 1500);
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setStatus("idle");
+      }, 4000);
+    } catch (error) {
+      console.error("Error enviando formulario:", error);
+      setStatus("error");
+    }
   };
 
   return (

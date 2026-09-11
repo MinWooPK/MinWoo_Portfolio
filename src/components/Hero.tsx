@@ -10,7 +10,8 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [isDownloaded, setIsDownloaded] = useState(false);
   const tiltCard = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = cardRef.current;
     if (!el) return;
@@ -20,9 +21,31 @@ export default function Hero() {
     el.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 16}deg) rotateY(${(x - 0.5) * 16}deg)`;
   };
 
+  const handleDownloadCV = () => {
+    setIsDownloading(true);
+
+    const link = document.createElement("a");
+    link.href = "/cv/MinWoo_Park_CV.pdf";
+    link.download = "MinWoo_Park_CV.pdf";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    setTimeout(() => {
+      setIsDownloading(false);
+      setIsDownloaded(true);
+
+      setTimeout(() => {
+        setIsDownloaded(false);
+      }, 3000);
+    }, 800);
+  };
+
   const resetTilt = () => {
     const el = cardRef.current;
-    if (el) el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+    if (el)
+      el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
   };
 
   useEffect(() => {
@@ -52,7 +75,7 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden pt-16"
     >
-      <div className="absolute inset-0 bg-grid mask-fade-b opacity-40" />
+      {/* <div className="absolute inset-0 bg-grid mask-fade-b opacity-40" /> */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-accent-500/20 rounded-full blur-[120px] animate-pulse-slow" />
       <div
         className="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand-500/20 rounded-full blur-[120px] animate-pulse-slow"
@@ -102,13 +125,29 @@ export default function Hero() {
                 {t.hero.viewWork}
                 <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
               </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-ink-700 hover:border-accent-500/50 text-ink-100 font-semibold transition-all duration-300 hover:bg-ink-900/60"
+              <button
+                type="button"
+                onClick={handleDownloadCV}
+                disabled={isDownloading}
+                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-ink-700 hover:border-accent-500/50 text-ink-100 font-semibold transition-all duration-300 hover:bg-ink-900/60 disabled:cursor-wait"
               >
-                <Download className="w-4 h-4" />
-                {t.hero.downloadCV}
-              </a>
+                {isDownloading ? (
+                  <>
+                    <Download className="w-4 h-4 animate-bounce" />
+                    Downloading...
+                  </>
+                ) : isDownloaded ? (
+                  <>
+                    <span className="text-accent-400">✓</span>
+                    CV Downloaded
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
+                    {t.hero.downloadCV}
+                  </>
+                )}
+              </button>
             </div>
 
             <div
@@ -119,6 +158,8 @@ export default function Hero() {
                 <a
                   key={social.name}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.name}
                   className="w-10 h-10 rounded-lg flex items-center justify-center text-ink-400 hover:text-accent-400 hover:bg-ink-800/60 border border-ink-800/60 hover:border-accent-500/30 transition-all duration-300"
                 >

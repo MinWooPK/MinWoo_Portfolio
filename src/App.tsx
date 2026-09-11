@@ -8,11 +8,12 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import Chatbot from "@/components/Chatbot/Chatbot";
 
 function App() {
   return (
     <div className="relative min-h-screen bg-ink-950 text-ink-100 overflow-x-hidden">
-      <MouseGlow />
+      {/* <MouseGlow /> */}
       <Navbar />
       <main>
         <Hero />
@@ -22,6 +23,7 @@ function App() {
         <Projects />
         <Experience />
         <Contact />
+        <Chatbot />
       </main>
       <Footer />
     </div>

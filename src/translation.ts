@@ -1,15 +1,17 @@
-export type Lang = "es" | "en" | "fr";
+export type Lang = "es" | "en" | "fr" | "kr";
 
 export const langNames: Record<Lang, string> = {
   es: "Español",
   en: "English",
   fr: "Français",
+  kr: "한국어",
 };
 
 export const langFlags: Record<Lang, string> = {
   es: "ES",
   en: "EN",
   fr: "FR",
+  kr: "KR",
 };
 
 export type TranslationSet = {
@@ -50,6 +52,7 @@ export type TranslationSet = {
     label: string;
     headingPre: string;
     headingHighlight: string;
+    stackTitle: string;
     categories: string[];
     expertise: { title: string; desc: string }[];
   };
@@ -63,6 +66,7 @@ export type TranslationSet = {
     items: {
       title: string;
       category: string;
+      image: string;
       description: string;
       metrics: string;
     }[];
@@ -71,8 +75,12 @@ export type TranslationSet = {
     label: string;
     headingPre: string;
     headingHighlight: string;
-    location: string;
-    items: { role: string; description: string; achievements: string[] }[];
+    items: {
+      role: string;
+      location: string;
+      description: string;
+      achievements: string[];
+    }[];
   };
   contact: {
     label: string;
@@ -100,6 +108,21 @@ export type TranslationSet = {
     crafted: string;
     backToTop: string;
   };
+  chatbot: {
+    greeting: string;
+    limitReached: string;
+    limitDescription: string;
+    contactEmail: string;
+    questionsAvailable: string;
+    questionsUsed: string;
+    inputLimit: string;
+    inputThinking: string;
+    inputPlaceholder: string;
+    timeout: string;
+    error: string;
+    close: string;
+    open: string;
+  };
 };
 
 export const translations: Record<Lang, TranslationSet> = {
@@ -124,7 +147,7 @@ export const translations: Record<Lang, TranslationSet> = {
       bio: "Full-stack developer with 3+ years building enterprise web applications and ERP systems with React and .NET. I work across the entire stack — from responsive React interfaces and Next.js SEO optimization to REST APIs, SQL database tuning, and Azure deployments. I care about clean code, real-world usability, and shipping features that solve business problems.",
       viewWork: "View My Work",
       downloadCV: "Download CV",
-      location: "Madrid, Spain · Remote",
+      location: "Madrid, Spain · On-site / Remote",
       codeComment: "// Full-Stack Developer · React & .NET",
       codeFocus: "ERP systems",
       stats: [
@@ -153,7 +176,7 @@ export const translations: Record<Lang, TranslationSet> = {
         "Bank Reconciliation",
       ],
       quote:
-        "The best software doesn't just work — it gets out of the way. When an ERP feels effortless, that's when you know every layer, from SQL to UI, is doing its job.",
+        "I have a very serious relationship with coffee, but we haven't talked about marriage yet.",
       quoteRole: "Full-Stack Developer · React & .NET",
       techTitle: "Tech I Work With",
       quickFactsTitle: "Quick Facts",
@@ -161,15 +184,16 @@ export const translations: Record<Lang, TranslationSet> = {
         { label: "Currently", value: "Full-Stack Dev @ CTF Code to Fit" },
         { label: "Focus", value: "React, .NET, ERP Systems" },
         { label: "Open to", value: "New opportunities" },
-        { label: "Location", value: "Madrid, Spain · Remote" },
-        { label: "Languages", value: "Spanish, English" },
+        { label: "Location", value: "Madrid, Spain · On-site / Remote" },
+        { label: "Languages", value: "Spanish, French, English, Korean" },
       ],
     },
     skills: {
       label: "Skills & Expertise",
       headingPre: "What I bring to",
       headingHighlight: "the table",
-      categories: ["Front-End", "Back-End & Cloud"],
+      stackTitle: "Tech Stack",
+      categories: ["Front-End", "Back-End & Cloud", "Testing & Tools"],
       expertise: [
         {
           title: "ERP Development",
@@ -208,6 +232,7 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "Rental Management ERP",
           category: "Enterprise ERP",
+          image: "/project/1.png",
           description:
             "A full rental management ERP with modules for clients, companies, landlords, contracts, renewals, and users. Built with React and .NET, deployed on Azure.",
           metrics: "8+ modules",
@@ -215,6 +240,8 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "Credit Check & Bank Reconciliation",
           category: "ERP Module",
+          image: "/project/2.png",
+
           description:
             "Implemented credit check workflows and bank reconciliation features integrated with the rental ERP, handling payment matching and financial data processing.",
           metrics: "Financial grade",
@@ -222,6 +249,8 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "Electronic Invoicing & Subscriptions",
           category: "ERP Module",
+          image: "/project/3.png",
+
           description:
             "Built electronic invoicing and subscription management features, including automated billing cycles and integration with external invoicing systems via REST APIs.",
           metrics: "Automated billing",
@@ -229,20 +258,25 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "ERP Frontend Integration",
           category: "Web Application",
+          image: "/project/4.png",
+
           description:
             "Integrated the React frontend with existing REST APIs and legacy SOAP services, building a unified interface for multiple business workflows and projects.",
           metrics: "Multi-project",
         },
         {
-          title: "SQL Query Optimization",
-          category: "Database",
+          title: "Multilingual Website for a Podiatry Clinic",
+          category: "Corporate Website",
+          image: "/project/Rebe.png",
+
           description:
-            "Optimized relational database queries in high-load ERP systems, improving response times and ensuring data integrity across complex business operations.",
-          metrics: "High-load ready",
+            "Development of a multilingual corporate website for a podiatry clinic, featuring dedicated sections for services, clinic information, location and team. Responsive design focused on clear and accessible navigation.",
+          metrics: "Multilingual Web",
         },
         {
           title: "Responsive ERP Interfaces",
           category: "UI/UX",
+          image: "/project/6.png",
           description:
             "Designed and built responsive, accessible interfaces with Tailwind CSS and styled-components, adapted for different projects and business needs.",
           metrics: "Multi-project",
@@ -253,10 +287,10 @@ export const translations: Record<Lang, TranslationSet> = {
       label: "Career",
       headingPre: "Where I've",
       headingHighlight: "made an impact",
-      location: "Madrid, Spain · Remote",
       items: [
         {
           role: "Full-Stack Developer · React & .NET",
+          location: "Madrid, Spain · On-site / Remote",
           description:
             "Full-stack development and maintenance of a rental management ERP system using React and .NET. Working remotely from Madrid, I build and maintain modules across the entire stack — from React interfaces to .NET APIs, SQL databases, and Azure deployments.",
           achievements: [
@@ -269,6 +303,18 @@ export const translations: Record<Lang, TranslationSet> = {
             "Integrated React Query for efficient server state management, caching, and data fetching",
             "Wrote and maintained unit and integration tests with Jest, improving reliability and coverage",
             "Participated in deployment and maintenance of applications on Azure",
+          ],
+        },
+        {
+          role: "React Developer",
+          location: "Chile · Remote",
+          description:
+            "Landing page and product UI development for a bank-loan FinTech. Full-time remote role focused on conversion, onboarding, and user engagement.",
+          achievements: [
+            "Designed and built landing pages, optimizing UX and conversion while aligning the design with brand identity and business goals",
+            "Developed the user registration flow as an intuitive process following UX and usability best practices",
+            "Built responsive web interfaces with React and Tailwind CSS for a consistent experience across devices",
+            "Implemented dynamic automated emails, personalizing templates with user data and triggering sends from user actions to improve retention and engagement",
           ],
         },
       ],
@@ -300,6 +346,25 @@ export const translations: Record<Lang, TranslationSet> = {
       crafted: "Crafted with care.",
       backToTop: "Back to top",
     },
+    chatbot: {
+      greeting:
+        "Hi 👋 I'm MinWoo's assistant. You can ask me about his experience, projects, or technologies.",
+      limitReached: "You've reached the question limit",
+      limitDescription:
+        "If you'd like to know more about my experience, you can contact me directly.",
+      contactEmail: "Contact me by email",
+      questionsAvailable: "{{count}} questions available",
+      questionsUsed: "{{count}}/{{max}} questions used",
+      inputLimit: "Limit reached",
+      inputThinking: "MinWoo AI is thinking...",
+      inputPlaceholder: "Ask about MinWoo...",
+      timeout:
+        "Sorry, it seems I'm taking too long to respond. I'm not available right now. If you'd like to know more about my profile, you can contact me directly.",
+      error:
+        "Sorry, something went wrong. You can contact me directly by email.",
+      close: "Close chatbot",
+      open: "Open chatbot",
+    },
   },
 
   es: {
@@ -323,7 +388,7 @@ export const translations: Record<Lang, TranslationSet> = {
       bio: "Desarrollador full-stack con más de 3 años construyendo aplicaciones web empresariales y sistemas ERP con React y .NET. Trabajo en todo el stack — desde interfaces responsivas en React y optimización SEO con Next.js hasta APIs REST, ajuste de bases de datos SQL y despliegues en Azure. Me importa el código limpio, la usabilidad real y entregar funcionalidades que resuelven problemas de negocio.",
       viewWork: "Ver Mi Trabajo",
       downloadCV: "Descargar CV",
-      location: "Madrid, España · Remoto",
+      location: "Madrid, España · Presencial / Remoto",
       codeComment: "// Desarrollador Full-Stack · React & .NET",
       codeFocus: "sistemas ERP",
       stats: [
@@ -352,7 +417,7 @@ export const translations: Record<Lang, TranslationSet> = {
         "Conciliación Bancaria",
       ],
       quote:
-        "El mejor software no solo funciona — se aparta del camino. Cuando un ERP se siente sin esfuerzo, es cuando sabes que cada capa, desde SQL hasta la UI, está haciendo su trabajo.",
+        "Tengo una relación muy seria con el café, pero todavía no hemos hablado de matrimonio.",
       quoteRole: "Desarrollador Full-Stack · React & .NET",
       techTitle: "Tecnologías que uso",
       quickFactsTitle: "Datos Rápidos",
@@ -360,15 +425,16 @@ export const translations: Record<Lang, TranslationSet> = {
         { label: "Actualmente", value: "Full-Stack Dev @ CTF Code to Fit" },
         { label: "Enfoque", value: "React, .NET, Sistemas ERP" },
         { label: "Abierto a", value: "Nuevas oportunidades" },
-        { label: "Ubicación", value: "Madrid, España · Remoto" },
-        { label: "Idiomas", value: "Español, Inglés" },
+        { label: "Ubicación", value: "Madrid, España · Presencial / Remoto" },
+        { label: "Idiomas", value: "Español, francés, inglés, coreano" },
       ],
     },
     skills: {
       label: "Habilidades y Experiencia",
       headingPre: "Lo que aporto a",
       headingHighlight: "la mesa",
-      categories: ["Front-End", "Back-End y Cloud"],
+      stackTitle: "Stack tecnológico",
+      categories: ["Front-End", "Back-End & Cloud", "Testing & Tools"],
       expertise: [
         {
           title: "Desarrollo ERP",
@@ -407,6 +473,7 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "ERP de Gestión de Alquileres",
           category: "ERP Empresarial",
+          image: "/project/1.png",
           description:
             "Un ERP completo de gestión de alquileres con módulos para clientes, empresas, propietarios, contratos, renovaciones y usuarios. Construido con React y .NET, desplegado en Azure.",
           metrics: "8+ módulos",
@@ -414,6 +481,8 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "Verificación de Crédito y Conciliación Bancaria",
           category: "Módulo ERP",
+          image: "/project/2.png",
+
           description:
             "Implementación de flujos de verificación de crédito y conciliación bancaria integrados con el ERP de alquileres, gestionando emparejamiento de pagos y procesamiento de datos financieros.",
           metrics: "Nivel financiero",
@@ -421,6 +490,8 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "Facturación Electrónica y Suscripciones",
           category: "Módulo ERP",
+          image: "/project/3.png",
+
           description:
             "Funcionalidad de facturación electrónica y gestión de suscripciones, incluyendo ciclos de facturación automatizados e integración con sistemas externos vía APIs REST.",
           metrics: "Facturación automática",
@@ -428,20 +499,26 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "Integración Frontend del ERP",
           category: "Aplicación Web",
+          image: "/project/4.png",
+
           description:
             "Integración del frontend en React con APIs REST existentes y servicios SOAP heredados, construyendo una interfaz unificada para múltiples flujos de trabajo y proyectos.",
           metrics: "Multi-proyecto",
         },
         {
-          title: "Optimización de Consultas SQL",
-          category: "Base de Datos",
+          title: "Web Multidioma para Clínica Podológica",
+          category: "Web Corporativa",
+          image: "/project/Rebe.png",
+
           description:
-            "Optimización de consultas en bases de datos relacionales para sistemas ERP de alta carga, mejorando tiempos de respuesta y asegurando integridad de datos.",
-          metrics: "Alta carga",
+            "Desarrollo de una web corporativa y multidioma para una clínica podológica, con secciones de servicios, información sobre la clínica, ubicación y contenido sobre el equipo. Diseño responsive y orientado a una navegación clara y accesible.",
+          metrics: "Web multidioma",
         },
         {
           title: "Interfaces ERP Responsivas",
           category: "UI/UX",
+          image: "/project/6.png",
+
           description:
             "Diseño y construcción de interfaces responsivas y accesibles con Tailwind CSS y styled-components, adaptadas a diferentes proyectos y necesidades de negocio.",
           metrics: "Multi-proyecto",
@@ -452,10 +529,10 @@ export const translations: Record<Lang, TranslationSet> = {
       label: "Carrera",
       headingPre: "Dónde he",
       headingHighlight: "dejado huella",
-      location: "Madrid, España · Remoto",
       items: [
         {
           role: "Desarrollador Full-Stack · React & .NET",
+          location: "Madrid, España · Presencial / Remoto",
           description:
             "Desarrollo y mantenimiento full-stack de un sistema ERP de gestión de alquileres usando React y .NET. Trabajando en remoto desde Madrid, construyo y mantengo módulos en todo el stack — desde interfaces en React hasta APIs .NET, bases de datos SQL y despliegues en Azure.",
           achievements: [
@@ -468,6 +545,18 @@ export const translations: Record<Lang, TranslationSet> = {
             "Integración de React Query para gestión eficiente del estado del servidor, caché y obtención de datos",
             "Escritura y mantenimiento de pruebas unitarias y de integración con Jest, mejorando fiabilidad y cobertura",
             "Participación en despliegue y mantenimiento de aplicaciones en Azure",
+          ],
+        },
+        {
+          role: "React Developer",
+          location: "Chile · En remoto",
+          description:
+            "Desarrollo de landing para una FinTech de préstamos bancarios. Jornada completa en remoto, centrada en conversión, registro de usuarios y engagement.",
+          achievements: [
+            "Maquetación y desarrollo de landing pages, optimizando la experiencia de usuario y la tasa de conversión, alineando el diseño con la identidad de marca y objetivos de negocio",
+            "Desarrollo del flujo de registro de usuarios, creando procesos intuitivos y optimizados bajo buenas prácticas de UX y usabilidad",
+            "Desarrollo de interfaces web responsivas con React y Tailwind CSS, asegurando una experiencia consistente en todos los dispositivos",
+            "Implementación de correos electrónicos dinámicos y automatizados, personalizando plantillas con datos del usuario y activando envíos según acciones para mejorar la retención y el engagement",
           ],
         },
       ],
@@ -499,6 +588,25 @@ export const translations: Record<Lang, TranslationSet> = {
       crafted: "Hecho con cuidado.",
       backToTop: "Volver arriba",
     },
+    chatbot: {
+      greeting:
+        "Hola 👋 Soy el asistente de MinWoo. Puedes preguntarme sobre su experiencia, proyectos o tecnologías.",
+      limitReached: "Has alcanzado el límite de preguntas",
+      limitDescription:
+        "Si quieres saber más sobre mi experiencia, puedes contactar conmigo directamente.",
+      contactEmail: "Contactar por email",
+      questionsAvailable: "{{count}} preguntas disponibles",
+      questionsUsed: "{{count}}/{{max}} preguntas utilizadas",
+      inputLimit: "Límite alcanzado",
+      inputThinking: "MinWoo AI está pensando...",
+      inputPlaceholder: "Pregunta sobre MinWoo...",
+      timeout:
+        "Perdona, parece que estoy tardando demasiado en responder. Ahora mismo no estoy disponible. Si quieres saber más sobre mi perfil, puedes contactar directamente conmigo.",
+      error:
+        "Perdona, ha ocurrido un problema. Puedes contactar directamente conmigo por email.",
+      close: "Cerrar chatbot",
+      open: "Abrir chatbot",
+    },
   },
 
   fr: {
@@ -522,7 +630,7 @@ export const translations: Record<Lang, TranslationSet> = {
       bio: "Développeur full-stack avec plus de 3 ans d'expérience dans la création d'applications web d'entreprise et de systèmes ERP avec React et .NET. Je travaille sur toute la pile — des interfaces React responsives et l'optimisation SEO avec Next.js aux APIs REST, l'optimisation de bases de données SQL et les déploiements Azure. Je me soucie du code propre, de l'utilisabilité réelle et de la livraison de fonctionnalités qui résolvent des problèmes métier.",
       viewWork: "Voir Mon Travail",
       downloadCV: "Télécharger CV",
-      location: "Madrid, Espagne · Télétravail",
+      location: "Madrid, Espagne · Présentiel / Télétravail",
       codeComment: "// Développeur Full-Stack · React & .NET",
       codeFocus: "systèmes ERP",
       stats: [
@@ -551,7 +659,7 @@ export const translations: Record<Lang, TranslationSet> = {
         "Rapprochement Bancaire",
       ],
       quote:
-        "Le meilleur logiciel ne fait pas que fonctionner — il se fait oublier. Quand un ERP semble sans effort, c'est que chaque couche, de SQL à l'UI, fait son travail.",
+        "J'entretiens une relation très sérieuse avec le café, mais nous n'avons pas encore parlé de mariage.",
       quoteRole: "Développeur Full-Stack · React & .NET",
       techTitle: "Technologies que j'utilise",
       quickFactsTitle: "Faits Rapides",
@@ -559,15 +667,19 @@ export const translations: Record<Lang, TranslationSet> = {
         { label: "Actuellement", value: "Full-Stack Dev @ CTF Code to Fit" },
         { label: "Focus", value: "React, .NET, Systèmes ERP" },
         { label: "Ouvert à", value: "Nouvelles opportunités" },
-        { label: "Localisation", value: "Madrid, Espagne · Télétravail" },
-        { label: "Langues", value: "Espagnol, Anglais" },
+        {
+          label: "Localisation",
+          value: "Madrid, Espagne ·Preésentiel / Télétravail",
+        },
+        { label: "Langues", value: "Espagnol, Français, Anglais, Coréen" },
       ],
     },
     skills: {
       label: "Compétences et Expertise",
       headingPre: "Ce que j'apporte à",
       headingHighlight: "la table",
-      categories: ["Front-End", "Back-End et Cloud"],
+      stackTitle: "Stack technologique",
+      categories: ["Front-End", "Back-End & Cloud", "Testing & Tools"],
       expertise: [
         {
           title: "Développement ERP",
@@ -606,6 +718,8 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "ERP de Gestion de Location",
           category: "ERP d'Entreprise",
+          image: "/project/1.png",
+
           description:
             "Un ERP complet de gestion de location avec des modules pour les clients, entreprises, propriétaires, contrats, renouvellements et utilisateurs. Construit avec React et .NET, déployé sur Azure.",
           metrics: "8+ modules",
@@ -613,6 +727,8 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "Vérification de Crédit et Rapprochement Bancaire",
           category: "Module ERP",
+          image: "/project/2.png",
+
           description:
             "Implémentation de flux de vérification de crédit et de rapprochement bancaire intégrés à l'ERP de location, gérant la correspondance des paiements et le traitement des données financières.",
           metrics: "Niveau financier",
@@ -620,6 +736,8 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "Facturation Électronique et Abonnements",
           category: "Module ERP",
+          image: "/project/3.png",
+
           description:
             "Fonctionnalités de facturation électronique et de gestion d'abonnements, incluant des cycles de facturation automatisés et l'intégration avec des systèmes externes via des APIs REST.",
           metrics: "Facturation auto",
@@ -627,20 +745,26 @@ export const translations: Record<Lang, TranslationSet> = {
         {
           title: "Intégration Frontend ERP",
           category: "Application Web",
+          image: "/project/4.png",
+
           description:
             "Intégration du frontend React avec les APIs REST existantes et les services SOAP hérités, construisant une interface unifiée pour plusieurs flux de travail et projets.",
           metrics: "Multi-projet",
         },
         {
-          title: "Optimisation de Requêtes SQL",
-          category: "Base de Données",
+          title: "Site web multilingue pour une clinique podologique",
+          category: "Site web d'entreprise",
+          image: "/project/Rebe.png",
+
           description:
-            "Optimisation des requêtes de bases de données relationnelles pour des systèmes ERP à forte charge, améliorant les temps de réponse et assurant l'intégrité des données.",
-          metrics: "Forte charge",
+            "Développement d'un site web d'entreprise multilingue pour une clinique podologique, avec des sections dédiées aux services, à la présentation de la clinique, à sa localisation et à l'équipe. Design responsive et navigation claire et accessible.",
+          metrics: "Site multilingue",
         },
         {
           title: "Interfaces ERP Responsives",
           category: "UI/UX",
+          image: "/project/6.png",
+
           description:
             "Conception et construction d'interfaces responsives et accessibles avec Tailwind CSS et styled-components, adaptées à différents projets et besoins métier.",
           metrics: "Multi-projet",
@@ -651,10 +775,10 @@ export const translations: Record<Lang, TranslationSet> = {
       label: "Carrière",
       headingPre: "Où j'ai eu un",
       headingHighlight: "impact",
-      location: "Madrid, Espagne · Télétravail",
       items: [
         {
           role: "Développeur Full-Stack · React & .NET",
+          location: "Madrid, Espagne · Présentiel / Télétravail",
           description:
             "Développement et maintenance full-stack d'un système ERP de gestion de location utilisant React et .NET. En télétravail depuis Madrid, je construis et maintiens des modules sur toute la pile — des interfaces React aux APIs .NET, bases de données SQL et déploiements Azure.",
           achievements: [
@@ -667,6 +791,18 @@ export const translations: Record<Lang, TranslationSet> = {
             "Intégration de React Query pour la gestion efficace de l'état serveur, du cache et de la récupération des données",
             "Écriture et maintenance de tests unitaires et d'intégration avec Jest, améliorant fiabilité et couverture",
             "Participation au déploiement et à la maintenance des applications sur Azure",
+          ],
+        },
+        {
+          role: "Développeur React",
+          location: "Chili · Télétravail",
+          description:
+            "Développement de landing pages pour une FinTech de prêts bancaires. Poste à temps plein en télétravail, axé sur la conversion, l'inscription des utilisateurs et l'engagement.",
+          achievements: [
+            "Maquettage et développement de landing pages, en optimisant l'expérience utilisateur et le taux de conversion, et en alignant le design sur l'identité de marque et les objectifs business",
+            "Développement du parcours d'inscription, avec des processus intuitifs suivant les bonnes pratiques UX et d'utilisabilité",
+            "Développement d'interfaces web responsives avec React et Tailwind CSS, pour une expérience cohérente sur tous les appareils",
+            "Mise en place d'e-mails dynamiques et automatisés, en personnalisant les templates avec les données utilisateur et en déclenchant les envois selon les actions pour améliorer la rétention et l'engagement",
           ],
         },
       ],
@@ -697,6 +833,294 @@ export const translations: Record<Lang, TranslationSet> = {
       connect: "Connectez-vous",
       crafted: "Fait avec soin.",
       backToTop: "Retour en haut",
+    },
+    chatbot: {
+      greeting:
+        "Bonjour 👋 Je suis l'assistant de MinWoo. Vous pouvez me poser des questions sur son expérience, ses projets ou ses technologies.",
+      limitReached: "Vous avez atteint la limite de questions",
+      limitDescription:
+        "Si vous souhaitez en savoir plus sur mon expérience, vous pouvez me contacter directement.",
+      contactEmail: "Me contacter par e-mail",
+      questionsAvailable: "{{count}} questions disponibles",
+      questionsUsed: "{{count}}/{{max}} questions utilisées",
+      inputLimit: "Limite atteinte",
+      inputThinking: "MinWoo AI réfléchit...",
+      inputPlaceholder: "Posez une question sur MinWoo...",
+      timeout:
+        "Désolé, il semble que je mette trop de temps à répondre. Je ne suis pas disponible pour le moment. Si vous souhaitez en savoir plus sur mon profil, vous pouvez me contacter directement.",
+      error:
+        "Désolé, un problème est survenu. Vous pouvez me contacter directement par e-mail.",
+      close: "Fermer le chatbot",
+      open: "Ouvrir le chatbot",
+    },
+  },
+  kr: {
+    nav: {
+      about: "소개",
+      skills: "기술",
+      projects: "프로젝트",
+      experience: "경력",
+      contact: "연락하기",
+      letsTalk: "이야기 나누기",
+    },
+
+    hero: {
+      availability: "새로운 기회를 찾고 있습니다",
+      greeting: "안녕하세요, 저는",
+      roles: [
+        "풀스택 개발자",
+        "React & .NET 엔지니어",
+        "ERP 시스템 개발자",
+        "Azure 클라우드 개발자",
+      ],
+      bio: "React와 .NET을 활용하여 엔터프라이즈 웹 애플리케이션과 ERP 시스템을 3년 이상 개발해 온 풀스택 개발자입니다. 반응형 React 인터페이스와 Next.js SEO 최적화부터 REST API, SQL 데이터베이스 최적화, Azure 배포까지 전체 기술 스택을 다룹니다. 깔끔한 코드와 실제 사용성을 중요하게 생각하며, 비즈니스 문제를 해결하는 기능을 만드는 데 집중합니다.",
+      viewWork: "프로젝트 보기",
+      downloadCV: "이력서 다운로드",
+      location: "Madrid, España · 출근 / 원격",
+      codeComment: "// 풀스택 개발자 · React & .NET",
+      codeFocus: "ERP 시스템",
+      stats: [
+        { value: "3+", label: "경력 연차" },
+        { value: "8+", label: "개발한 ERP 모듈" },
+        { value: "React + .NET", label: "기술 스택" },
+        { value: "Remote", label: "근무 방식" },
+      ],
+    },
+
+    about: {
+      label: "소개",
+      headingPre: "기업이 신뢰할 수 있는",
+      headingHighlight: "ERP 시스템을 만듭니다",
+      paragraphs: [
+        "엔터프라이즈 웹 애플리케이션과 ERP 시스템을 3년 이상 개발해 온 풀스택 개발자입니다. React 기반의 반응형 인터페이스와 Next.js 성능 최적화부터 .NET API, SQL 데이터베이스 최적화, Azure 배포까지 전체 기술 스택을 다루고 있습니다.",
+        "현재 실제 운영 중인 임대 관리 ERP를 개발하고 유지보수하며, 고객, 계약, 결제, 전자세금계산서, 은행 대사 등의 모듈을 개발하고 있습니다. 실제 비즈니스 문제를 해결하는 코드와 사용자가 불편함 없이 사용할 수 있는 인터페이스를 중요하게 생각합니다. 제 개발 철학은 간단합니다. 제대로 작동하고, 안정적이며, 사용하기 쉬운 소프트웨어를 만드는 것입니다.",
+        "마드리드에서 원격으로 근무하며 다양한 직군의 팀과 긴밀하게 협업하여 데이터베이스 설계부터 최종 UI까지 기능을 처음부터 끝까지 개발합니다. 좋은 소프트웨어는 기술적인 부분뿐만 아니라 비즈니스의 요구사항까지 이해하는 사람이 만든다고 생각합니다.",
+      ],
+
+      erpModulesTitle: "개발한 ERP 모듈",
+      erpModules: [
+        "고객 및 사용자",
+        "기업 및 임대인",
+        "계약 및 갱신",
+        "결제",
+        "전자세금계산서",
+        "은행 대사",
+      ],
+
+      quote:
+        "커피와는 아주 진지한 관계를 유지하고 있지만, 아직 결혼 이야기는 하지 않았습니다.",
+      quoteRole: "풀스택 개발자 · React & .NET",
+
+      techTitle: "사용 기술",
+      quickFactsTitle: "주요 정보",
+
+      facts: [
+        {
+          label: "현재",
+          value: "Full-Stack Dev @ CTF Code to Fit",
+        },
+        {
+          label: "주요 분야",
+          value: "React, .NET, ERP 시스템",
+        },
+        {
+          label: "관심 분야",
+          value: "새로운 기회",
+        },
+        {
+          label: "근무 지역",
+          value: "Madrid, España · 출근 / 원격",
+        },
+        { label: "언어", value: "스페인어, 프랑스어, 영어, 한국어" },
+      ],
+    },
+
+    skills: {
+      label: "기술 및 전문성",
+      headingPre: "제가 제공할 수 있는",
+      headingHighlight: "가치",
+      stackTitle: "기술 스택",
+      categories: ["Front-End", "Back-End & Cloud", "Testing & Tools"],
+      expertise: [
+        {
+          title: "ERP 개발",
+          desc: "고객, 계약, 결제, 청구 등 기업의 일상적인 업무를 지원하는 엔터프라이즈 모듈을 개발합니다.",
+        },
+        {
+          title: "서버 상태 관리",
+          desc: "복잡한 ERP 업무 흐름에서 캐싱, 데이터 동기화 및 효율적인 데이터 조회를 위해 TanStack Query를 사용합니다.",
+        },
+        {
+          title: "성능 및 SEO",
+          desc: "속도, Core Web Vitals 및 검색 엔진 최적화를 위해 Next.js SSR/SSG를 활용합니다.",
+        },
+        {
+          title: "사용성 및 접근성",
+          desc: "실제 사용자를 고려하여 Tailwind를 활용한 반응형 인터페이스와 접근성 중심의 UI를 개발합니다.",
+        },
+        {
+          title: "풀스택 개발",
+          desc: "React 프론트엔드와 .NET API, SQL 데이터베이스 및 Azure 클라우드 환경을 연결하여 전체 기능을 개발합니다.",
+        },
+        {
+          title: "테스트 및 품질",
+          desc: "Jest를 활용한 단위 및 통합 테스트와 함께 실제 운영 환경에서의 디버깅 및 문제 해결 경험을 갖고 있습니다.",
+        },
+      ],
+    },
+
+    projects: {
+      label: "주요 프로젝트",
+      headingPre: "제가 자랑스럽게 생각하는",
+      headingHighlight: "프로젝트",
+      all: "전체",
+      featured: "주요 프로젝트",
+      githubLink: "GitHub에서 모든 프로젝트 보기",
+
+      items: [
+        {
+          title: "임대 관리 ERP",
+          category: "엔터프라이즈 ERP",
+          image: "/project/1.png",
+
+          description:
+            "고객, 기업, 임대인, 계약, 갱신 및 사용자 관리 기능을 포함한 임대 관리 ERP입니다. React와 .NET으로 개발하고 Azure에 배포했습니다.",
+          metrics: "8개 이상의 모듈",
+        },
+        {
+          title: "신용 평가 및 은행 대사",
+          category: "ERP 모듈",
+          image: "/project/2.png",
+
+          description:
+            "임대 관리 ERP에 신용 평가 및 은행 대사 기능을 구현하여 결제 매칭과 금융 데이터 처리를 담당했습니다.",
+          metrics: "금융 업무",
+        },
+        {
+          title: "전자세금계산서 및 구독 관리",
+          category: "ERP 모듈",
+          image: "/project/3.png",
+
+          description:
+            "자동 청구 주기와 외부 청구 시스템의 REST API 연동을 포함한 전자세금계산서 및 구독 관리 기능을 개발했습니다.",
+          metrics: "자동 청구",
+        },
+        {
+          title: "ERP 프론트엔드 통합",
+          category: "웹 애플리케이션",
+          image: "/project/4.png",
+
+          description:
+            "기존 REST API 및 레거시 SOAP 서비스를 React 프론트엔드와 통합하여 여러 비즈니스 업무를 하나의 인터페이스에서 처리할 수 있도록 개발했습니다.",
+          metrics: "멀티 프로젝트",
+        },
+        {
+          title: "족부 클리닉 다국어 웹사이트",
+          category: "기업 웹사이트",
+          image: "/project/Rebe.png",
+
+          description:
+            "족부 클리닉을 위한 다국어 기업 웹사이트를 개발했습니다. 진료 서비스, 클리닉 소개, 위치 및 의료진 정보를 제공하며, 다양한 디바이스에 대응하는 반응형 디자인과 명확하고 접근성 높은 사용자 경험을 구현했습니다.",
+          metrics: "다국어 웹",
+        },
+        {
+          title: "반응형 ERP 인터페이스",
+          category: "UI/UX",
+          image: "/project/6.png",
+
+          description:
+            "Tailwind CSS와 styled-components를 활용하여 다양한 프로젝트와 비즈니스 요구사항에 맞는 반응형 및 접근성 중심의 인터페이스를 개발했습니다.",
+          metrics: "멀티 프로젝트",
+        },
+      ],
+    },
+
+    experience: {
+      label: "경력",
+      headingPre: "제가",
+      headingHighlight: "만들어 온 가치",
+
+      items: [
+        {
+          role: "풀스택 개발자 · React & .NET",
+          location: "Madrid, España · 대면 근무 / 원격 근무",
+          description:
+            "React와 .NET을 활용한 임대 관리 ERP 시스템의 풀스택 개발 및 유지보수를 담당하고 있습니다. 마드리드에서 원격으로 근무하며 React 인터페이스부터 .NET API, SQL 데이터베이스 및 Azure 배포까지 전체 기술 스택의 모듈을 개발하고 유지보수합니다.",
+
+          achievements: [
+            "고객, 기업, 임대인, 계약, 갱신 및 사용자 관리 ERP 모듈 개발",
+            "신용 평가, 은행 대사, 결제, 전자세금계산서 및 구독 기능 구현",
+            "사용성과 접근성을 고려한 Tailwind CSS 기반 반응형 인터페이스 개발",
+            "React와 Next.js를 활용한 복잡한 웹 애플리케이션 개발 및 성능과 SEO 최적화",
+            ".NET 및 ASP.NET 기반 REST 및 SOAP API를 활용한 엔터프라이즈 통합",
+            "고부하 시스템의 SQL 쿼리를 최적화하여 성능 및 데이터 무결성 개선",
+            "React Query를 활용한 서버 상태 관리, 캐싱 및 효율적인 데이터 조회",
+            "Jest를 활용한 단위 및 통합 테스트 작성 및 유지보수",
+            "Azure 환경에서 애플리케이션 배포 및 유지보수 참여",
+          ],
+        },
+
+        {
+          role: "React 개발자",
+          location: "칠레 · 원격",
+          description:
+            "은행 대출 FinTech 기업의 랜딩 페이지 및 제품 UI를 개발했습니다. 전환율, 사용자 가입 및 사용자 참여를 중심으로 한 풀타임 원격 근무였습니다.",
+
+          achievements: [
+            "브랜드 아이덴티티와 비즈니스 목표에 맞춘 랜딩 페이지 개발 및 UX와 전환율 최적화",
+            "UX 및 사용성 모범 사례를 적용한 직관적인 사용자 회원가입 플로우 개발",
+            "React와 Tailwind CSS를 활용한 반응형 웹 인터페이스 개발",
+            "사용자 데이터를 활용한 동적 이메일 템플릿 및 자동 이메일 발송 기능 구현",
+          ],
+        },
+      ],
+    },
+
+    contact: {
+      label: "연락하기",
+      headingPre: "함께",
+      headingHighlight: "멋진 것을 만들어 보세요",
+      description:
+        "현재 새로운 프로젝트와 선별적인 프리랜서 및 컨설팅 업무에 열려 있습니다. 새로운 프로젝트, 디자인 시스템 검토 또는 성능 개선이 필요하시다면 편하게 연락해 주세요.",
+      email: "이메일",
+      location: "위치",
+      responseTime: "응답 시간",
+      responseValue: "보통 24시간 이내",
+      formName: "이름",
+      formNamePlaceholder: "홍길동",
+      formEmail: "이메일 주소",
+      formEmailPlaceholder: "name@example.com",
+      formMessage: "메시지",
+      formMessagePlaceholder: "프로젝트에 대해 알려주세요...",
+      send: "메시지 보내기",
+      sending: "전송 중...",
+      success: "메시지가 전송되었습니다! 곧 답변드리겠습니다.",
+      error: "문제가 발생했습니다. 다시 시도해 주세요.",
+    },
+
+    footer: {
+      navigation: "메뉴",
+      connect: "연결",
+      crafted: "정성을 담아 만들었습니다.",
+      backToTop: "맨 위로",
+    },
+
+    chatbot: {
+      greeting:
+        "안녕하세요 👋 MinWoo의 AI 어시스턴트입니다. 경력, 프로젝트 또는 기술에 대해 질문하실 수 있습니다.",
+      limitReached: "질문 한도에 도달했습니다.",
+      limitDescription: "제 경력에 대해 더 알고 싶으시면 직접 연락해 주세요.",
+      contactEmail: "이메일로 연락하기",
+      questionsAvailable: "개의 질문이 남아 있습니다.",
+      questionsUsed: "개의 질문을 사용했습니다.",
+      inputLimit: "질문 한도 도달",
+      inputThinking: "MinWoo AI가 답변을 준비하고 있습니다...",
+      inputPlaceholder: "MinWoo에 대해 질문해 주세요...",
+      timeout:
+        "죄송합니다. 답변이 너무 오래 걸리고 있습니다. 현재 AI를 이용할 수 없습니다. 제 프로필에 대해 더 알고 싶으시면 직접 연락해 주세요.",
+      error: "죄송합니다. 문제가 발생했습니다. 이메일로 직접 연락해 주세요.",
+      close: "챗봇 닫기",
+      open: "챗봇 열기",
     },
   },
 };

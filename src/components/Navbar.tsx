@@ -40,7 +40,7 @@ export default function Navbar() {
     }
   }, [langOpen]);
 
-  const langs: Lang[] = ["en", "es", "fr"];
+  const langs: Lang[] = ["en", "es", "fr", "kr"];
 
   return (
     <header
@@ -56,7 +56,7 @@ export default function Navbar() {
             <Code2 className="w-5 h-5 text-ink-950" strokeWidth={2.5} />
           </div>
           <span className="font-display font-bold text-lg text-white hidden sm:block">
-            MinWoo <span className="text-accent-400">.</span>
+            MinWoo <span className="text-accent-400"></span>
           </span>
         </a>
 

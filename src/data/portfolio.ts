@@ -25,6 +25,7 @@ import {
   Users,
   Building2,
   RefreshCw,
+  TestTube2,
 } from "lucide-react";
 
 export const profile = {
@@ -45,9 +46,13 @@ export const profile = {
 };
 
 export const socials = [
-  { name: "GitHub", href: "https://github.com", icon: Github },
-  { name: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
-  { name: "Twitter", href: "https://twitter.com", icon: Twitter },
+  // { name: "GitHub", href: "https://github.com", icon: Github },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/min-woo-park-kim",
+    icon: Linkedin,
+  },
+  // { name: "Twitter", href: "https://twitter.com", icon: Twitter },
   { name: "Email", href: "mailto:minwoowork91@gmail.com", icon: Mail },
 ];
 
@@ -63,23 +68,34 @@ export const skills = [
   {
     category: "Front-End",
     items: [
-      { name: "React", level: 95 },
-      { name: "Next.js", level: 88 },
-      { name: "TypeScript", level: 85 },
-      { name: "TanStack Query", level: 90 },
-      { name: "Tailwind CSS", level: 92 },
-      { name: "Styled Components", level: 85 },
+      { name: "React", level: 90 },
+      { name: "TypeScript", level: 60 },
+      { name: "Tailwind CSS", level: 90 },
+      { name: "Styled Components", level: 80 },
+      { name: "TanStack Query", level: 70 },
+      { name: "Zustand", level: 65 },
+      { name: "Next.js", level: 45 },
+      { name: "React Native", level: 35 },
     ],
   },
   {
     category: "Back-End & Cloud",
     items: [
-      { name: ".NET / ASP.NET", level: 88 },
-      { name: "REST & SOAP APIs", level: 87 },
-      { name: "SQL", level: 85 },
-      { name: "Azure", level: 82 },
-      { name: "Jest Testing", level: 80 },
-      { name: "Figma", level: 78 },
+      { name: ".NET / ASP.NET", level: 50 },
+      { name: "REST & SOAP APIs", level: 85 },
+      { name: "SQL", level: 80 },
+      { name: "Azure", level: 60 },
+      { name: "Node.js", level: 35 },
+    ],
+  },
+  {
+    category: "Testing & Tools",
+    items: [
+      { name: "Vitest", level: 60 },
+      { name: "Jest", level: 60 },
+      { name: "Cypress", level: 55 },
+      { name: "Figma", level: 70 },
+      { name: "Git", level: 85 },
     ],
   },
 ];
@@ -123,7 +139,20 @@ export const projects = [
     category: "Enterprise ERP",
     description:
       "A full rental management ERP with modules for clients, companies, landlords, contracts, renewals, and users. Built with React and .NET, deployed on Azure.",
-    tags: ["React", ".NET", "Azure", "SQL"],
+    tags: [
+      "React",
+      "Next",
+      "Tailwind",
+      "Figma",
+      "Zustand",
+      "Tanstak Query",
+      "SQL",
+      ".NET",
+      "REST API",
+      "Azure",
+      "vitest",
+      "cypress",
+    ],
     accent: "from-brand-500 to-brand-700",
     featured: true,
     link: "#",
@@ -134,7 +163,20 @@ export const projects = [
     category: "ERP Module",
     description:
       "Implemented credit check workflows and bank reconciliation features integrated with the rental ERP, handling payment matching and financial data processing.",
-    tags: ["React", "TanStack Query", ".NET", "SQL"],
+    tags: [
+      "React",
+      "Next",
+      "Tailwind",
+      "Figma",
+      "Zustand",
+      "Tanstak Query",
+      "SQL",
+      ".NET",
+      "REST API",
+      "Azure",
+      "vitest",
+      "cypress",
+    ],
     accent: "from-accent-500 to-accent-700",
     featured: true,
     link: "#",
@@ -145,7 +187,20 @@ export const projects = [
     category: "ERP Module",
     description:
       "Built electronic invoicing and subscription management features, including automated billing cycles and integration with external invoicing systems via REST APIs.",
-    tags: ["React", ".NET", "REST API", "Azure"],
+    tags: [
+      "React",
+      "Next",
+      "Tailwind",
+      "Figma",
+      "Zustand",
+      "Tanstak Query",
+      "SQL",
+      ".NET",
+      "REST API",
+      "Azure",
+      "vitest",
+      "cypress",
+    ],
     accent: "from-amber-500 to-orange-700",
     featured: false,
     link: "#",
@@ -156,18 +211,29 @@ export const projects = [
     category: "Web Application",
     description:
       "Integrated the React frontend with existing REST APIs and legacy SOAP services, building a unified interface for multiple business workflows and projects.",
-    tags: ["React", "REST", "SOAP", "Tailwind"],
+    tags: [
+      "React",
+      "Next",
+      "Tailwind",
+      "Figma",
+      "a11y",
+      "SQL",
+      "REST",
+      "SOAP",
+      "vitest",
+      "cypress",
+    ],
     accent: "from-rose-500 to-pink-700",
     featured: false,
     link: "#",
     metrics: "Multi-project",
   },
   {
-    title: "SQL Query Optimization",
-    category: "Database",
+    title: "Tramontan",
+    category: "Web",
     description:
       "Optimized relational database queries in high-load ERP systems, improving response times and ensuring data integrity across complex business operations.",
-    tags: ["SQL", ".NET", "Performance"],
+    tags: ["Tailwind", "React", "Performance"],
     accent: "from-cyan-500 to-teal-700",
     featured: false,
     link: "#",
@@ -178,7 +244,7 @@ export const projects = [
     category: "UI/UX",
     description:
       "Designed and built responsive, accessible interfaces with Tailwind CSS and styled-components, adapted for different projects and business needs.",
-    tags: ["React", "Tailwind", "Figma", "a11y"],
+    tags: ["React", "Next", "Tailwind", "Figma", "a11y", "SQL", "REST"],
     accent: "from-violet-500 to-indigo-700",
     featured: false,
     link: "#",
@@ -217,6 +283,15 @@ export const experience = [
       "Figma",
     ],
   },
+  {
+    role: "React Developer",
+    company: "ETpay",
+    period: "Feb 2023 — May 2023",
+    description:
+      "Landing page development for a bank-loan FinTech. Full-time remote role focused on conversion, onboarding, and engagement.",
+    achievements: [],
+    tags: ["React", "Tailwind CSS", "UX", "Email"],
+  },
 ];
 
 export const techStack = [
@@ -224,14 +299,21 @@ export const techStack = [
   { name: "Next.js", icon: Code2 },
   { name: "TypeScript", icon: Braces },
   { name: "TanStack Query", icon: Layers },
+  { name: "Zustand", icon: Layers },
   { name: "Tailwind CSS", icon: Layout },
   { name: "Styled Components", icon: PenTool },
+
   { name: ".NET / ASP.NET", icon: Server },
-  { name: "Azure", icon: Cloud },
+  { name: "Node.js", icon: Server },
+
   { name: "SQL", icon: Database },
+  { name: "Vitest", icon: FileCheck },
   { name: "Jest", icon: FileCheck },
-  { name: "Figma", icon: Figma },
+  { name: "Cypress", icon: TestTube2 },
+
+  { name: "Azure", icon: Cloud },
   { name: "Git", icon: GitBranch },
+  { name: "Figma", icon: Figma },
 ];
 
 export const erpModules = [

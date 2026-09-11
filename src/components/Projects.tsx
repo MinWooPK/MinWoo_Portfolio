@@ -77,10 +77,13 @@ export default function Projects() {
                   style={{ transitionDelay: `${0.1 + i * 0.08}s` }}
                 >
                   <div
-                    className={`relative h-44 bg-gradient-to-br ${project.accent} overflow-hidden`}
+                    className={`relative h-44 bg-gradient-to-br overflow-hidden`}
                   >
-                    <div className="absolute inset-0 bg-grid opacity-20" />
-                    <div className="absolute inset-0 bg-ink-950/30" />
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
                     <div className="absolute top-4 left-4 flex items-center gap-2">
                       {project.featured && (
                         <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-ink-950/60 backdrop-blur-sm text-xs font-medium text-white">
@@ -98,11 +101,11 @@ export default function Projects() {
                         {item.metrics}
                       </span>
                     </div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
                         <ArrowUpRight className="w-6 h-6 text-white" />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="p-6">
@@ -110,7 +113,7 @@ export default function Projects() {
                       <h3 className="font-display font-semibold text-lg text-white group-hover:text-accent-400 transition-colors">
                         {item.title}
                       </h3>
-                      <ArrowUpRight className="w-5 h-5 text-ink-500 group-hover:text-accent-400 group-hover:rotate-0 transition-all duration-300 -translate-x-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-0" />
+                      {/* <ArrowUpRight className="w-5 h-5 text-ink-500 group-hover:text-accent-400 group-hover:rotate-0 transition-all duration-300 -translate-x-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-0" /> */}
                     </div>
                     <p className="text-sm text-ink-400 leading-relaxed mb-4">
                       {item.description}
@@ -131,7 +134,7 @@ export default function Projects() {
             })}
           </div>
 
-          <div className="text-center mt-12">
+          {/* <div className="text-center mt-12">
             <a
               href="https://github.com"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-ink-700 hover:border-accent-500/50 text-ink-200 hover:text-accent-400 font-medium transition-all duration-300 hover:bg-ink-900/60"
@@ -139,7 +142,7 @@ export default function Projects() {
               {t.projects.githubLink}
               <ArrowUpRight className="w-4 h-4" />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

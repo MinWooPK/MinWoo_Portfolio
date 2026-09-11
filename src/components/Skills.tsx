@@ -56,8 +56,17 @@ export default function Skills() {
               </div>
             ))}
           </div>
+          <div className="flex items-center gap-4 mb-10 mt-20">
+            <div className="h-px flex-1 bg-ink-800" />
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+            <span className="text-accent-400 font-mono text-xs font-medium tracking-[0.2em] uppercase">
+              {t.skills.stackTitle}
+            </span>
+
+            <div className="h-px flex-1 bg-ink-800" />
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {" "}
             {skills.map((category, ci) => (
               <div key={ci} className="glass-card p-6 lg:p-8">
                 <h3 className="font-display font-semibold text-lg text-white mb-6">

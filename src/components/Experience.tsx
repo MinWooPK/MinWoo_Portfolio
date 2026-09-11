@@ -45,6 +45,7 @@ export default function Experience() {
             <div className="space-y-8">
               {t.experience.items.map((job, i) => {
                 const data = experience[i];
+                if (!data) return null;
                 return (
                   <div
                     key={i}
@@ -77,7 +78,7 @@ export default function Experience() {
                         </span>
                         <span className="inline-flex items-center gap-1.5 text-ink-500">
                           <MapPin className="w-3.5 h-3.5" />
-                          {t.experience.location}
+                          {job.location}
                         </span>
                       </div>
 
