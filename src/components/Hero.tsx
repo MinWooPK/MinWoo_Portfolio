@@ -24,10 +24,10 @@ export default function Hero() {
     setIsDownloading(true);
 
     const cvFiles = {
-      es: "MinWoo_Park_CV_ES.pdf",
-      en: "MinWoo_Park_CV_EN.pdf",
-      fr: "MinWoo_Park_CV_FR.pdf",
-      kr: "MinWoo_Park_CV_KR.pdf",
+      es: "CV-MINWOO-ES.pdf",
+      en: "CV-MINWOO-EN.pdf",
+      fr: "CV-MINWOO-FR.pdf",
+      kr: "CV-MINWOO-KR.pdf",
     };
 
     const fileName = cvFiles[lang as keyof typeof cvFiles] ?? cvFiles.en;
