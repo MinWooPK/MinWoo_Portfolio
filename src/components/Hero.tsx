@@ -4,7 +4,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { socials } from "@/data/portfolio";
 
 export default function Hero() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const roles = t.hero.roles;
   const [text, setText] = useState("");
   const [roleIndex, setRoleIndex] = useState(0);
@@ -20,13 +20,21 @@ export default function Hero() {
     const y = (e.clientY - rect.top) / rect.height;
     el.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 16}deg) rotateY(${(x - 0.5) * 16}deg)`;
   };
-
   const handleDownloadCV = () => {
     setIsDownloading(true);
 
+    const cvFiles = {
+      es: "MinWoo_Park_CV_ES.pdf",
+      en: "MinWoo_Park_CV_EN.pdf",
+      fr: "MinWoo_Park_CV_FR.pdf",
+      kr: "MinWoo_Park_CV_KR.pdf",
+    };
+
+    const fileName = cvFiles[lang as keyof typeof cvFiles] ?? cvFiles.en;
+
     const link = document.createElement("a");
-    link.href = "/cv/MinWoo_Park_CV.pdf";
-    link.download = "MinWoo_Park_CV.pdf";
+    link.href = `/cv/${fileName}`;
+    link.download = fileName;
 
     document.body.appendChild(link);
     link.click();
