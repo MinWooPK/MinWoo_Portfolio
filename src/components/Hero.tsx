@@ -31,10 +31,10 @@ export default function Hero() {
     };
 
     const fileName = cvFiles[lang as keyof typeof cvFiles] ?? cvFiles.en;
-    const pdfGeneral = "MinWooCV.pdf";
+    // const pdfGeneral = "MinWooCV.pdf"
     const link = document.createElement("a");
-    link.href = `/cv/${pdfGeneral}`;
-    link.download = pdfGeneral;
+    link.href = `/cv/${fileName}`;
+    link.download = fileName;
 
     document.body.appendChild(link);
     link.click();
