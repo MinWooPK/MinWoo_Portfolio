@@ -157,9 +157,11 @@ export default function Hero() {
                 )}
               </button> */}
               <a
-                href="/cv/MinWoo_Park_CV.pdf"
-                download="MinWoo_Park_CV.pdf"
-                onClick={handleDownloadCV}
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleDownloadCV();
+                }}
                 className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-ink-700 hover:border-accent-500/50 text-ink-100 font-semibold transition-all duration-300 hover:bg-ink-900/60"
               >
                 {isDownloading ? (
