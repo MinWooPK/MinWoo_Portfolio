@@ -33,7 +33,7 @@ export default function Hero() {
     const fileName = cvFiles[lang as keyof typeof cvFiles] ?? cvFiles.en;
 
     const link = document.createElement("a");
-    link.href = `/cv/${fileName}`;
+    link.href = `${window.location.origin}/cv/${fileName}`;
     link.download = fileName;
 
     document.body.appendChild(link);
